@@ -16,11 +16,31 @@ public class MaxHeapTest {
 		
 		System.out.println("Max Heapfiy on 12th postion: " + maxHeap.getHeapElement(12));
 		
+		maxHeap.buildMaxHeap();
+		
+		for(int i=0 ; i < data.length ; i++){
+			System.out.print(maxHeap.getHeapElement(i) + " ");
+		}
+		
+		System.out.println();
+		
+		maxHeap.heapIncreaseKey(13, 30);
+		
+		for(int i=0 ; i < data.length ; i++){
+			System.out.print(maxHeap.getHeapElement(i) + " ");
+		}
+		
+		System.out.println("Root of MaxHeap: " + maxHeap.getHeapElement(0));
+		
 		MaxHeap maxHeap2 = new MaxHeap(data2);
 		
 		maxHeap2.buildMaxHeap();
 		
 		System.out.println("Root of the Heap: " + maxHeap2.getHeapElement(0));
+		
+		System.out.println("Extract Max element: " + maxHeap2.heapExtractMax());
+		
+		System.out.println("Root element of MaxHeap2: " + maxHeap2.getHeapElement(0));
 		
 		int[] sortedHeap = maxHeap.heapSort();
 		

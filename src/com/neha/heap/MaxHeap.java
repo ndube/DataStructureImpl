@@ -99,6 +99,30 @@ public class MaxHeap {
 		return sortedHeap;
 	}
 	
+	public int heapExtractMax(){
+		
+		if(isEmpty()){
+			return -1;
+		}
+		
+		int max = heap[0];
+		
+		heap[0] = heap[heapSize -1];
+		heapSize--;
+		maxHeapify(0);
+		return max;
+	}
+	
+	public void heapIncreaseKey(int key, int value){
+		if(key >= heapSize || heap[key] > value){
+			return;
+		}
+		
+		
+		
+		
+	}
+	
 	public int getHeapElement(int i){
 		if(i < heapSize && i>= 0){
 			return heap[i];
