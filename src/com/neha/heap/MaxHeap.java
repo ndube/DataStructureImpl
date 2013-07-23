@@ -12,10 +12,17 @@ public class MaxHeap {
 	
 	
 	
-	public void insert(int value){
+	public void buildMaxHeap(){
+		if(isEmpty()){
+			return ;
+		}
+		
+		for(int i=(heapSize/2)-1; i >=0 ; i--){
+			maxHeapfiyIterative(i);
+		}
 		
 	}
-	
+
 	public void maxHeapify(int i){
 		
 		if(i < heapSize && i >= 0 ){
@@ -77,12 +84,31 @@ public class MaxHeap {
 		}
 	}
 	
+	public int[] heapSort(){
+		int[] sortedHeap = new int[heapSize];		
+		
+		while(heapSize >= 2){
+			sortedHeap[heapSize-1] = heap[0];
+			heap[0] = heap[heapSize-1];
+			heapSize--;
+			maxHeapify(0);
+		}
+		
+		sortedHeap[0] = heap[0];
+		
+		return sortedHeap;
+	}
+	
 	public int getHeapElement(int i){
 		if(i < heapSize && i>= 0){
 			return heap[i];
 		}
 		
 		return -1;
+	}
+	
+	private boolean isEmpty() {		
+		return heapSize == 0;
 	}
 	
 	
