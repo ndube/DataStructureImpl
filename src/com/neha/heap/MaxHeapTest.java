@@ -18,7 +18,7 @@ public class MaxHeapTest {
 		
 		maxHeap.buildMaxHeap();
 		
-		for(int i=0 ; i < data.length ; i++){
+		for(int i=0 ; i < maxHeap.size() ; i++){
 			System.out.print(maxHeap.getHeapElement(i) + " ");
 		}
 		
@@ -26,7 +26,11 @@ public class MaxHeapTest {
 		
 		maxHeap.heapIncreaseKey(13, 30);
 		
-		for(int i=0 ; i < data.length ; i++){
+		maxHeap.heapInsert(40);
+		
+		maxHeap.heapDecreaseKey(0, 2);
+		
+		for(int i=0 ; i < maxHeap.size() ; i++){
 			System.out.print(maxHeap.getHeapElement(i) + " ");
 		}
 		

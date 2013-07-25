@@ -118,11 +118,66 @@ public class MaxHeap {
 			return;
 		}
 		
+		heap[key] = value;
 		
+		int parent = getParent(key);
+		
+		while(parent >=0 && heap[parent] < heap[key]){
+			maxHeapify(parent);	
+			key = parent;
+			parent = getParent(parent);
+		}
 		
 		
 	}
 	
+	
+	public void heapInsert(int value){
+		if(isFull()){
+			heap = resizeHeap(heapSize * 2);
+			heapSize += 1 ;
+			
+			heap[heapSize-1] = -1;
+			heapIncreaseKey(heapSize-1, value);
+			
+		}
+	}
+	
+	private int[] resizeHeap(int newSize) {
+		
+		int[] newHeap = new int[newSize];
+		
+		for(int i=0;i<heap.length;i++){
+			newHeap[i] = heap[i];
+		}
+		
+		return newHeap ;
+	}
+	
+	public void heapDecreaseKey(int key, int value){
+		if(heap[key] < value){
+			return;
+		}
+		
+		heap[key] = value;
+		
+		maxHeapify(key);
+	}
+
+
+
+	private boolean isFull() {		
+		return heapSize == heap.length;
+	}
+
+
+
+	private int getParent(int key) {		
+		return (int) (Math.ceil(((double)key)/2)) -1;
+	}
+
+
+
 	public int getHeapElement(int i){
 		if(i < heapSize && i>= 0){
 			return heap[i];
@@ -133,6 +188,10 @@ public class MaxHeap {
 	
 	private boolean isEmpty() {		
 		return heapSize == 0;
+	}
+	
+	public int size(){
+		return heapSize;
 	}
 	
 	
